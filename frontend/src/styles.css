@@ -1,0 +1,152 @@
+
+/* styles.css
+   목적: 전체 레이아웃(사이드바+콘텐츠)과 기본 UI 컴포넌트 스타일 정의
+   - 너무 과한 프레임워크 없이 간결한 모던 스타일
+   - 시스템 폰트 사용, 카드/버튼/폼 통일감
+*/
+
+:root{
+  --bg: #0b1020;
+  --panel: #121a2a;
+  --panel-2: #0f1625;
+  --text: #e9eefc;
+  --muted: #a3b1d1;
+  --primary: #5da1ff;
+  --primary-2: #2f73e0;
+  --danger: #ff6b6b;
+  --ok: #26d07c;
+  --border: #1d2740;
+  --shadow: 0 10px 25px rgba(0,0,0,0.35);
+}
+
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; }
+body{
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+  background: radial-gradient(1200px 800px at 10% -10%, #16213e 0%, transparent 60%) , var(--bg);
+  color: var(--text);
+}
+
+/* 레이아웃: 좌측 네비게이션 + 우측 콘텐츠 */
+.app{
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  height: 100%;
+}
+
+/* 사이드바 */
+.sidebar{
+  background: linear-gradient(180deg, #0d1424 0%, #0b1220 100%);
+  border-right: 1px solid var(--border);
+  padding: 20px 16px;
+}
+
+.brand{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 10px;
+  border-radius: 14px;
+  background: linear-gradient(180deg, #0f1a30, #0c1426);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  margin-bottom: 14px;
+}
+.brand .dot{ width: 10px; height: 10px; border-radius: 50%; background: var(--primary); box-shadow: 0 0 18px var(--primary); }
+.brand h1{ font-size: 16px; margin: 0; letter-spacing: .2px; }
+.brand small{ display:block; color: var(--muted); }
+
+.menu{
+  margin-top: 12px;
+  display: grid;
+  gap: 8px;
+}
+.menu button{
+  text-align: left;
+  border: 1px solid var(--border);
+  background: var(--panel-2);
+  color: var(--text);
+  padding: 10px 12px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform .12s ease, background .2s ease, border-color .2s ease;
+}
+.menu button:hover{ transform: translateY(-1px); border-color: #223257; }
+.menu button.active{ background: linear-gradient(180deg, #11203a, #0f1c33); border-color: #27406d; box-shadow: 0 8px 18px rgba(45,77,130,.3) }
+
+/* 콘텐츠 영역 */
+.content{
+  padding: 24px;
+  overflow: auto;
+}
+
+.section{
+  background: linear-gradient(180deg, #0e172a, #0c1426);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: var(--shadow);
+  margin-bottom: 18px;
+}
+
+h2{ margin: 0 0 10px; font-size: 20px; }
+h3{ margin: 12px 0 8px; font-size: 16px; color: var(--muted); }
+
+.row{
+  display: flex; gap: 10px; flex-wrap: wrap;
+}
+.grid2{
+  display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+}
+@media (max-width: 900px){
+  .app{ grid-template-columns: 1fr; }
+  .sidebar{ position: sticky; top: 0; z-index: 2; }
+  .grid2{ grid-template-columns: 1fr; }
+}
+
+input, select, button{
+  height: 38px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: #0c1426;
+  color: var(--text);
+  padding: 0 10px;
+  outline: none;
+}
+textarea{
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: #0c1426;
+  color: var(--text);
+  padding: 10px;
+  outline: none;
+}
+
+button{
+  cursor: pointer;
+  background: linear-gradient(180deg, var(--primary), var(--primary-2));
+  border: none;
+  color: white;
+  padding: 0 14px;
+  font-weight: 600;
+  transition: transform .1s ease, filter .1s ease;
+}
+button.ghost{
+  background: var(--panel-2);
+  border: 1px solid var(--border);
+}
+button:active{ transform: translateY(1px); filter: brightness(.95); }
+.badge{ display:inline-block; padding: 4px 8px; border-radius: 9999px; background:#14213b; border:1px solid #223257; color:#9fb6f1; font-size:12px; }
+
+ul{ padding-left: 18px; }
+li{ margin: 4px 0; }
+
+.card{
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: #0c1426;
+}
+.muted{ color: var(--muted); }
+.footer{ opacity:.6; margin-top:12px; font-size:12px; }

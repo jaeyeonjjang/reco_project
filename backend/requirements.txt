@@ -1,0 +1,7 @@
+# backend/requirements.txt
+# 목적: 백엔드 의존성 정의 (컨테이너 빌드 시 pip로 설치)
+Flask==3.0.3
+Flask-Cors==4.0.0
+SQLAlchemy==2.0.36
+psycopg2-binary==2.9.9
+waitress==3.0.0

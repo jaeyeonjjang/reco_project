@@ -1,0 +1,21 @@
+# docker-compose.backend.yml (v3) - correct build context
+name: reco-backend
+networks:
+  reco_net:
+    external: true
+
+services:
+  api:
+    build:
+      context: ../backend
+      dockerfile: Dockerfile
+    container_name: reco_api
+    restart: unless-stopped
+    environment:
+      DATABASE_URL: postgresql+psycopg2://appuser:apppass@reco_postgres:5432/appdb
+      FLASK_ENV: production
+      TZ: Asia/Seoul
+    ports:
+      - "8000:8000"
+    networks:
+      - reco_net

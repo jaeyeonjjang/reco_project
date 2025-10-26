@@ -1,0 +1,20 @@
+# docker-compose.frontend.yml (v3) - correct build context
+name: reco-frontend
+networks:
+  reco_net:
+    external: true
+
+services:
+  web:
+    build:
+      context: ../frontend
+      dockerfile: Dockerfile
+    container_name: reco_web
+    restart: unless-stopped
+    environment:
+      VITE_API_BASE: http://localhost:8000
+      TZ: Asia/Seoul
+    ports:
+      - "5173:80"
+    networks:
+      - reco_net

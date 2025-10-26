@@ -1,0 +1,11 @@
+# Backend (Flask)
+- 목적: 작품/리뷰 API 제공
+- 포트: 컨테이너 내부 8000 → 호스트 8000
+- 환경변수: `DATABASE_URL` (docker compose에서 주입)
+- 주요 엔드포인트:
+  - `GET /api/health`
+  - `GET /api/works?kind=movie|drama|webtoon`
+  - `POST /api/works` (JSON: title, kind)
+  - `GET /api/works/<id>/reviews`
+  - `POST /api/works/<id>/reviews` (JSON: user_name, rating, comment)
+  - `GET /api/recommendations?kind=movie|drama|webtoon`
