@@ -1,4 +1,4 @@
-# 공쥬와 프로젝트 – 영화·드라마·웹툰 추천 (Docker Skeleton)
+# 영화·드라마·웹툰 AI 추천 프로젝트 (Docker Skeleton)
 
 ## 구성
 - **DB(PostgreSQL)**: `docker/docker-compose.db.yml` — named volume(`reco_pgdata`)로 데이터 영속
